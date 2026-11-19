@@ -11,7 +11,8 @@ def calculate_subtotal(order, products):
         if product is None:
             continue
 
-        subtotal += product["price"] + item["quantity"]
+        #changed "+" to "*" to calculate correct subtotal
+        subtotal += product["price"] * item["quantity"]
 
     return round(subtotal, 2)
 
