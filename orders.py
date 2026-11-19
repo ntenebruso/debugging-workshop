@@ -33,14 +33,16 @@ def process_order(order, products, customers, tax_rates):
 
     errors = validate_order(order, products, customers)
 
+    #only change inventory if there are no errors
+    if errors==[]:
+        reserve_inventory(products, order)
+
     subtotal = calculate_subtotal(order, products)
     discounts = apply_discounts(order, customer, products, subtotal)
     tax = calculate_tax(customer, subtotal, tax_rates)
     shipping = calculate_shipping(subtotal)
 
     total = discounts["discounted_subtotal"] + tax + shipping
-
-    reserve_inventory(products, order)
 
     return {
         "order_id": order["id"],
