@@ -11,8 +11,8 @@ def low_stock_products(products, threshold=5):
 
 
 def products_sorted_by_price(products):
-    products.sort(key=lambda p: p["stock"])
-    return products
+    sorted_products = sorted(products, key=lambda p: p["price"])
+    return sorted_products
 
 
 def category_summary(products):
