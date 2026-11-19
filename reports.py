@@ -1,6 +1,7 @@
 def find_product_by_name(products, name):
+    # did not trim and did not make sure that both names compared were lowered (jorge)
     for product in products:
-        if product["name"].lower() == name:
+        if product["name"].lower().strip() == name.lower().strip():
             return product
     return None
 
