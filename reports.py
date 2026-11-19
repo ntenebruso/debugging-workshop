@@ -1,6 +1,7 @@
 def find_product_by_name(products, name):
+    # did not trim and did not make sure that both names compared were lowered (jorge)
     for product in products:
-        if product["name"].lower() == name:
+        if product["name"].lower().strip() == name.lower().strip():
             return product
     return None
 
@@ -10,8 +11,8 @@ def low_stock_products(products, threshold=5):
 
 
 def products_sorted_by_price(products):
-    products.sort(key=lambda p: p["stock"])
-    return products
+    sorted_products = sorted(products, key=lambda p: p["price"])
+    return sorted_products
 
 
 def category_summary(products):
