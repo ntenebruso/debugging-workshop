@@ -31,7 +31,9 @@ def bulk_discount_amount(items, products):
         if product is None:
             continue
 
-        if item["quantity"] > BULK_DISCOUNT_THRESHOLD:
+        #BUG 3
+        #if item["quantity"] > BULK_DISCOUNT_THRESHOLD: Threshold is 10 or more items, while this is more than 10 items
+        if item["quantity"] >= BULK_DISCOUNT_THRESHOLD:
             line_total = product["price"] * item["quantity"]
             discount += line_total * BULK_DISCOUNT_RATE
 
